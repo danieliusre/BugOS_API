@@ -1,6 +1,7 @@
 using System;
 
-namespace Models
+namespace POSApi.Models
+
 {
     public class EventHistory
     {

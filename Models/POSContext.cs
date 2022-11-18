@@ -12,6 +12,7 @@ namespace POSApi.Models
 
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Order> Orders { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Discount> Discounts { get; set; }
         public DbSet<Employee> Employees { get; set; }

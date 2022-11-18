@@ -13,63 +13,64 @@ namespace POSApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class EmployeeController : Controller
+    public class CustomerController : Controller
     {
-        private readonly EmployeeContext _context;
+        private readonly POSContext _context;
 
-        public EmployeeController(EmployeeContext context)
+        public CustomerController(POSContext context)
         {
             _context = context;
 
-            if (_context.Employees.Count() == 0)
+            if (_context.Customers.Count() == 0)
             {
-                _context.Employees.Add(
-                    new Employee
+                _context.Customers.Add(
+                    new Customer
                     {
                         Id = 1,
-                        Name = "Employee1_Name",
-                        Lastname = "Employee1_Lastname",
-                        Email = "Employee1_Email",
-                        EmployeeCardCode = "Employee1_CardCode"
+                        Name = "Customer1_Name",
+                        Lastname = "Customer1_Lastname",
+                        Email = "Customer1_Email",
+                        Password = "password",
+                        Address = "adress"
                     }
                 );
                 _context.SaveChanges();
             }
         }
 
-        // GET: api/Employee
+        // GET: api/Customer
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Employee>>> GetEmployeeItem()
+        public async Task<ActionResult<IEnumerable<Customer>>> GetCustomerItem()
         {
-            return await _context.Employees.ToListAsync();
+            return await _context.Customers.ToListAsync();
         }
 
-        // GET: api/Employee/5
+        // GET: api/Customer/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Employee>> GetEmployeeItem(long id)
+        public async Task<ActionResult<Customer>> GetCustomerItem(long id)
         {
-            var EmployeeItem = await _context.Employees.FindAsync(id);
+            var CustomerItem = await _context.Customers.FindAsync(id);
 
-            if (EmployeeItem == null)
+            if (CustomerItem == null)
             {
                 return NotFound();
             }
 
-            return EmployeeItem;
+            return CustomerItem;
         }
 
-        // PUT: api/Employee/5
+        // PUT: api/Customer/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutEmployee(ulong id, Employee Employee)
+        public async Task<IActionResult> PutCustomer(ulong id, Customer Customer)
         {
-            if (id != Employee.Id)
+            if (id != Customer.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(Employee).State = EntityState.Modified;
+            _context.Entry(Customer).State = EntityState.Modified;
 
             try
             {
@@ -77,7 +78,7 @@ namespace POSApi.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!EmployeeExists(id))
+                if (!CustomerExists(id))
                 {
                     return NotFound();
                 }
@@ -90,58 +91,60 @@ namespace POSApi.Controllers
             return NoContent();
         }
 
-        // POST: api/Employee
+        // POST: api/Customer
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
-        public async Task<ActionResult<Employee>> PostEmployeeItem(Employee Employee)
+        public async Task<ActionResult<Customer>> PostCustomerItem(Customer Customer)
         {
-            _context.Employees.Add(Employee);
+            _context.Customers.Add(Customer);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetEmployee", new { id = Employee.Id }, Employee);
+            return CreatedAtAction("GetCustomer", new { id = Customer.Id }, Customer);
         }
 
-        // DELETE: api/Employee/5
+        // DELETE: api/Customer/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Employee>> DeleteEmployee(ulong id)
+        public async Task<ActionResult<Customer>> DeleteCustomer(ulong id)
         {
-            var Employee = await _context.Employees.FindAsync(id);
-            if (Employee == null)
+            var Customer = await _context.Customers.FindAsync(id);
+            if (Customer == null)
             {
                 return NotFound();
             }
 
-            _context.Employees.Remove(Employee);
+            _context.Customers.Remove(Customer);
             await _context.SaveChangesAsync();
 
-            return Employee;
+            return Customer;
         }
 
-        private bool EmployeeExists(ulong id)
+        private bool CustomerExists(ulong id)
         {
-            return _context.Employees.Any(e => e.Id == id);
+            return _context.Customers.Any(e => e.Id == id);
         }
 
-        private List<Employee> GetEmployees()
+        private List<Customer> GetCustomers()
         {
-            return new List<Employee>()
+            return new List<Customer>()
             {
-                new Employee()
+                new Customer()
                 {
                     Id = 1,
                     Name = "John",
                     Lastname = "Smith",
                     Email = "John.Smith@gmail.com",
-                    EmployeeCardCode = "1111111111111"
+                    Password = "1",
+                    Address = " adresas "
                 },
-                new Employee()
+                new Customer()
                 {
                     Id = 2,
                     Name = "Jane",
                     Lastname = "Doe",
                     Email = "Jane.Doe@gmail.com",
-                    EmployeeCardCode = "22222222222"
+                    Password = "22",
+                    Address = " adresas2 "
                 }
             };
         }

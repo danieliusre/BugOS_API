@@ -1,4 +1,6 @@
-namespace Models
+
+namespace POSApi.Models
+
 {
     public class Customer
     {
