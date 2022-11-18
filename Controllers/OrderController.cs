@@ -7,32 +7,35 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using OrderApi.Models;
+using POSApi.Models;
+using System;
 
 namespace OrderApi.Controllers
 {
-    [Route("api/[controller]")] 
+    [Route("api/[controller]")]
     [ApiController]
     public class OrderController : Controller
     {
-        private readonly OrderContext _context;
+        private readonly POSContext _context;
 
-        public OrderController(OrderContext context)
+        public OrderController(POSContext context)
         {
             _context = context;
 
             if (_context.Orders.Count() == 0)
             {
-                _context.Orders.Add(new Order
-                {
-                    Id = 1,
-                    Status = 1,
-                    CreationDate = "2011-11-11",
-                    CompletionDate = "2022-11-11",
-                    Discount = 1,
-                    Employee = 1,
-                    Customer = 1
-                });
+                _context.Orders.Add(
+                    new Order
+                    {
+                        Id = 1,
+                        Status = 1,
+                        CreationDate = new DateTime(1111, 11, 11),
+                        CompletionDate = new DateTime(1111, 11, 11),
+                        Discount = 1,
+                        Employee = 1,
+                        Customer = 1
+                    }
+                );
                 _context.SaveChanges();
             }
         }
@@ -122,29 +125,22 @@ namespace OrderApi.Controllers
         {
             return _context.Orders.Any(e => e.Id == id);
         }
+
         private List<Order> GetOrders()
-    {
-        return new List<Order>()
         {
-            new Order()
+            return new List<Order>()
             {
-                Id = 1,
-                Name= "John",
-                Lastname = "Smith",
-                Email ="John.Smith@gmail.com",
-                Password = "1",
-                Address = " adresas "
-            },
-            new Order()
-            {
-                Id = 2,
-                Name= "Jane",
-                Lastname = "Doe",
-                Email ="Jane.Doe@gmail.com",
-                Password = "22",
-                Address = " adresas2 "
-            }
-        };
-    }
+                new Order()
+                {
+                    Id = 1,
+                    Status = 1,
+                    CreationDate = new DateTime(1111, 11, 11),
+                    CompletionDate = new DateTime(1111, 11, 11),
+                    Discount = 1,
+                    Employee = 1,
+                    Customer = 1
+                },
+            };
+        }
     }
 }

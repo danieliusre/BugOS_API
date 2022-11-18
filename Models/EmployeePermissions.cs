@@ -1,4 +1,4 @@
-namespace EmployeePermissionsApi.Models
+namespace POSApi.Models
 {
     public class EmployeePermissions
     {

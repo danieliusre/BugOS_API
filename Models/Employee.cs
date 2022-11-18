@@ -1,4 +1,4 @@
-﻿namespace EmployeeApi.Models
+﻿namespace POSApi.Models
 {
     public class Employee
     {

@@ -1,4 +1,4 @@
-namespace IncidentApi.Models
+namespace POSApi.Models
 {
     public class Incident
     {

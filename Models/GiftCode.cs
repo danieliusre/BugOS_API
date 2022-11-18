@@ -1,6 +1,6 @@
 using System;
 
-namespace CategoryApi.Models
+namespace POSApi.Models
 {
     public class GiftCode
     {
@@ -8,7 +8,7 @@ namespace CategoryApi.Models
         public string Code {get; set;}
         public int Status {get; set;}
         public ushort Value {get; set;}
-        public dateTime ExpirationDate {get; set;}
+        public DateTime ExpirationDate {get; set;}
         public ulong Order {get; set;}
     }
 }

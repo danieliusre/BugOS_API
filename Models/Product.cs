@@ -1,4 +1,4 @@
-namespace ProductApi.Models
+namespace POSApi.Models
 {
     public class Product
     {

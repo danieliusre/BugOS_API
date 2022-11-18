@@ -7,31 +7,33 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using CustomerApi.Models;
+using POSApi.Models;
 
-namespace CustomerApi.Controllers
+namespace POSApi.Controllers
 {
-    [Route("api/[controller]")] 
+    [Route("api/[controller]")]
     [ApiController]
     public class CustomerController : Controller
     {
-        private readonly CustomerContext _context;
+        private readonly POSContext _context;
 
-        public CustomerController(CustomerContext context)
+        public CustomerController(POSContext context)
         {
             _context = context;
 
             if (_context.Customers.Count() == 0)
             {
-                _context.Customers.Add(new Customer
-                {
-                    Id = 1,
-                    Name = "Customer1_Name",
-                    Lastname = "Customer1_Lastname",
-                    Email = "Customer1_Email",
-                    Password = "password",
-                    Address = "adress"
-                });
+                _context.Customers.Add(
+                    new Customer
+                    {
+                        Id = 1,
+                        Name = "Customer1_Name",
+                        Lastname = "Customer1_Lastname",
+                        Email = "Customer1_Email",
+                        Password = "password",
+                        Address = "adress"
+                    }
+                );
                 _context.SaveChanges();
             }
         }
@@ -121,29 +123,30 @@ namespace CustomerApi.Controllers
         {
             return _context.Customers.Any(e => e.Id == id);
         }
+
         private List<Customer> GetCustomers()
-    {
-        return new List<Customer>()
         {
-            new Customer()
+            return new List<Customer>()
             {
-                Id = 1,
-                Name= "John",
-                Lastname = "Smith",
-                Email ="John.Smith@gmail.com",
-                Password = "1",
-                Address = " adresas "
-            },
-            new Customer()
-            {
-                Id = 2,
-                Name= "Jane",
-                Lastname = "Doe",
-                Email ="Jane.Doe@gmail.com",
-                Password = "22",
-                Address = " adresas2 "
-            }
-        };
-    }
+                new Customer()
+                {
+                    Id = 1,
+                    Name = "John",
+                    Lastname = "Smith",
+                    Email = "John.Smith@gmail.com",
+                    Password = "1",
+                    Address = " adresas "
+                },
+                new Customer()
+                {
+                    Id = 2,
+                    Name = "Jane",
+                    Lastname = "Doe",
+                    Email = "Jane.Doe@gmail.com",
+                    Password = "22",
+                    Address = " adresas2 "
+                }
+            };
+        }
     }
 }
