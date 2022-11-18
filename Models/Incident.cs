@@ -5,6 +5,6 @@ namespace IncidentApi.Models
         public ulong Id {get; set;}
         public ulong Order {get; set;}
         public ulong Customer {get; set;}
-        public ulong Emploee {get; set;}
+        public ulong Employee {get; set;}
     }
 }
