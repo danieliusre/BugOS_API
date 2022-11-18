@@ -120,5 +120,27 @@ namespace EmployeeApi.Controllers
         {
             return _context.Employees.Any(e => e.Id == id);
         }
+        private List<Employee> GetEmployees()
+    {
+        return new List<Employee>()
+        {
+            new Employee()
+            {
+                Id = 1,
+                Name= "John",
+                Lastname = "Smith",
+                Email ="John.Smith@gmail.com",
+                EmployeeCardCode = "1111111111111"
+            },
+            new Employee()
+            {
+                Id = 2,
+                Name= "Jane",
+                Lastname = "Doe",
+                Email ="Jane.Doe@gmail.com",
+                EmployeeCardCode = "22222222222"
+            }
+        };
+    }
     }
 }
