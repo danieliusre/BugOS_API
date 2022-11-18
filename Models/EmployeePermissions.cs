@@ -1,4 +1,4 @@
-namespace EmployeePermissionsApi.Models
+namespace Models
 {
     public class EmployeePermissions
     {

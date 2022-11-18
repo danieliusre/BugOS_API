@@ -1,4 +1,6 @@
-namespace ShifttApi.Models
+using System;
+
+namespace Models
 {
     public class Shift
     {

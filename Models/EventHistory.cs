@@ -1,4 +1,6 @@
-namespace EventHistoryApi.Models
+using System;
+
+namespace Models
 {
     public class EventHistory
     {

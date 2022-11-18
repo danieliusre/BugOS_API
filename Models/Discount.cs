@@ -1,3 +1,5 @@
+using System;
+
 namespace DiscountApi.Models
 {
     public class Discount
@@ -11,7 +13,7 @@ namespace DiscountApi.Models
 
         public ulong Id {get; set;}
         public double Value {get; set;}
-        public DiscountType DiscountType {get; set;}
+        public DiscountType TypeDiscount {get; set;}
         public DateTime StartDate {get; set;}
         public uint Duration {get; set;}
     }

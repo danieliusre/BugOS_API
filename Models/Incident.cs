@@ -1,4 +1,4 @@
-namespace IncidentApi.Models
+namespace Models
 {
     public class Incident
     {
