@@ -1,4 +1,6 @@
+
 ﻿namespace POSApi.Models
+
 {
     public class Employee
     {

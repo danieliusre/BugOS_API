@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
 namespace POSApi.Models
+
 {
     public class EmployeeContext : DbContext
     {
