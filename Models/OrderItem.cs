@@ -1,6 +1,6 @@
 using System;
 
-namespace CategoryApi.Models
+namespace POSApi.Models
 {
     public class OrderItem
     {

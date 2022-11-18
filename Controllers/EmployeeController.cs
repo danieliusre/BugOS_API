@@ -7,11 +7,11 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using EmployeeApi.Models;
+using POSApi.Models;
 
-namespace EmployeeApi.Controllers
+namespace POSApi.Controllers
 {
-    [Route("api/[controller]")] 
+    [Route("api/[controller]")]
     [ApiController]
     public class EmployeeController : Controller
     {
@@ -23,14 +23,16 @@ namespace EmployeeApi.Controllers
 
             if (_context.Employees.Count() == 0)
             {
-                _context.Employees.Add(new Employee
-                {
-                    Id = 1,
-                    Name = "Employee1_Name",
-                    Lastname = "Employee1_Lastname",
-                    Email = "Employee1_Email",
-                    EmployeeCardCode = "Employee1_CardCode"
-                });
+                _context.Employees.Add(
+                    new Employee
+                    {
+                        Id = 1,
+                        Name = "Employee1_Name",
+                        Lastname = "Employee1_Lastname",
+                        Email = "Employee1_Email",
+                        EmployeeCardCode = "Employee1_CardCode"
+                    }
+                );
                 _context.SaveChanges();
             }
         }
@@ -120,27 +122,28 @@ namespace EmployeeApi.Controllers
         {
             return _context.Employees.Any(e => e.Id == id);
         }
+
         private List<Employee> GetEmployees()
-    {
-        return new List<Employee>()
         {
-            new Employee()
+            return new List<Employee>()
             {
-                Id = 1,
-                Name= "John",
-                Lastname = "Smith",
-                Email ="John.Smith@gmail.com",
-                EmployeeCardCode = "1111111111111"
-            },
-            new Employee()
-            {
-                Id = 2,
-                Name= "Jane",
-                Lastname = "Doe",
-                Email ="Jane.Doe@gmail.com",
-                EmployeeCardCode = "22222222222"
-            }
-        };
-    }
+                new Employee()
+                {
+                    Id = 1,
+                    Name = "John",
+                    Lastname = "Smith",
+                    Email = "John.Smith@gmail.com",
+                    EmployeeCardCode = "1111111111111"
+                },
+                new Employee()
+                {
+                    Id = 2,
+                    Name = "Jane",
+                    Lastname = "Doe",
+                    Email = "Jane.Doe@gmail.com",
+                    EmployeeCardCode = "22222222222"
+                }
+            };
+        }
     }
 }
