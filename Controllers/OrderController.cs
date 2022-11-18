@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using POSApi.Models;
 using System;
 
-namespace OrderApi.Controllers
+namespace POSApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

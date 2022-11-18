@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using POSApi.Models;
 using System;
 
-namespace API.Controllers
+namespace POSApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -59,6 +59,28 @@ namespace API.Controllers
             }
 
             return ProductItem;
+        }
+
+        // GET: api/Product/milk
+        [HttpGet("{keyword}")]
+        public async Task<ActionResult<IEnumerable<Product>>> GetSearchedProducts(string keyword)
+        {
+            List<Product> Products = new List<Product>();
+            List<Product> SearchedProducts = new List<Product>();
+            foreach(var product in Products)
+            {
+                if(product.Name.Contains(keyword))
+                {
+                    SearchedProducts.Add(product);
+                }
+            }
+
+            if (SearchedProducts == null)
+            {
+                return NotFound();
+            }
+
+            return SearchedProducts;
         }
 
         // PUT: api/Product/5
