@@ -15,9 +15,9 @@ namespace POSApi.Controllers
     [ApiController]
     public class EmployeeController : Controller
     {
-        private readonly EmployeeContext _context;
+        private readonly POSContext _context;
 
-        public EmployeeController(EmployeeContext context)
+        public EmployeeController(POSContext context)
         {
             _context = context;
 
