@@ -39,23 +39,56 @@ namespace POSApi.Controllers
 
         // GET: api/Employee
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Employee>>> GetEmployeeItem()
+        public async Task<ActionResult<IEnumerable<Employee>>> GetEmployee()
         {
             return await _context.Employees.ToListAsync();
         }
 
         // GET: api/Employee/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Employee>> GetEmployeeItem(long id)
+        public async Task<ActionResult<Employee>> GetEmployee(ulong id)
         {
-            var EmployeeItem = await _context.Employees.FindAsync(id);
+            var Employee = await _context.Employees.FindAsync(id);
 
-            if (EmployeeItem == null)
+            if (Employee == null)
             {
                 return NotFound();
             }
 
-            return EmployeeItem;
+            return Employee;
+        }
+
+        // GET: api/Employee/{EmployeeCardCode}
+        [HttpGet("{employeeCardCode}")] //1st Cashier user story
+        public async Task<ActionResult<Employee>> GetEmployeeByCode(string EmployeeCardCode)
+        {
+            List<Employee> Employees = new List<Employee>();
+            Employees = GetEmployees();
+            var Employee = new Employee()
+                {
+                    Id = 1,
+                    Name = "John",
+                    Lastname = "Smith",
+                    Email = "John.Smith@gmail.com",
+                    EmployeeCardCode = "1111111111111"
+                };
+            /*
+            bool request = false;
+            foreach (var employee in Employees)
+            {
+                if (EmployeeCardCode == employee.EmployeeCardCode)
+                {
+                    request = true;
+                    return employee;
+                }
+            }
+            */
+            if (Employee == null)
+            {
+                return BadRequest();
+            }
+            else return NoContent();
+
         }
 
         // PUT: api/Employee/5
@@ -89,6 +122,8 @@ namespace POSApi.Controllers
 
             return NoContent();
         }
+
+
 
         // POST: api/Employee
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
