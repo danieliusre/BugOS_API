@@ -51,14 +51,14 @@ namespace OrderApi.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Order>> GetOrderItem(long id)
         {
-            var OrderItem = await _context.Orders.FindAsync(id);
+            var Order = await _context.Orders.FindAsync(id);
 
-            if (OrderItem == null)
+            if (Order == null)
             {
                 return NotFound();
             }
 
-            return OrderItem;
+            return Order;
         }
 
         // PUT: api/Order/5
